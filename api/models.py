@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Group(models.Model):
-    name = models.CharField(verbose_name="group name", max_length=5, unique=True)
+    name = models.CharField(verbose_name="group name", max_length=15, unique=True)
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class Student(models.Model):
 
 
 class ClassRoom(models.Model):
-    number = models.CharField(verbose_name="classroom number", max_length=5)
+    number = models.CharField(verbose_name="classroom number", max_length=15)
 
 
 class Lesson(models.Model):

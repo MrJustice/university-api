@@ -42,6 +42,9 @@ class GroupViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(item)
         return Response(serializer.data)
 
+    # def update(self, request, *args, **kwargs):
+    #     pass
+
     def destroy(self, request, *args, **kwargs):
         item = self.get_object()
         item.delete()
