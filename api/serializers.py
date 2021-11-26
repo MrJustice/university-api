@@ -10,22 +10,23 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class GroupSerializer(serializers.ModelSerializer):
-    students = StudentSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = models.Group
-        fields = "__all__"
-
-
 class ClassRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ClassRoom
         fields = "__all__"
 
 
+class GroupSerializer(serializers.ModelSerializer):
+    students = StudentSerializer(many=True, read_only=True)
+    lesson_set = serializers.StringRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = models.Group
+        fields = "__all__"
+
+
 class LessonSerializer(serializers.ModelSerializer):
-    classroom = ClassRoomSerializer(many=True, read_only=True)
+    classroom = ClassRoomSerializer(read_only=True)
     groups = GroupSerializer(many=True, read_only=True)
 
     class Meta:

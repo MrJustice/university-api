@@ -20,21 +20,21 @@ class GroupFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Group
 
-    name = factory.Sequence(lambda n: f"Group_{n}")
+    name = factory.Sequence(lambda n: f"Group_{n+1}")
 
 
 class ClassRoomFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.ClassRoom
 
-    number = factory.Sequence(lambda n: f"Classroom_{n}")
+    number = factory.Sequence(lambda n: f"Classroom_{n+1}")
 
 
 class LessonFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Lesson
 
-    name = factory.Sequence(lambda n: f"Lesson_{n}")
+    name = factory.Sequence(lambda n: f"Lesson_{n+1}")
 
     @factory.post_generation
     def groups(self, create, extracted, **kwargs):
