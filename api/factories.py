@@ -1,6 +1,20 @@
 import factory
 from api import models
 
+from django.contrib.auth.models import User
+
+
+class SuperUserFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = User
+
+    email = 'admin@admin.com'
+    username = 'admin'
+    password = factory.PostGenerationMethodCall('set_password', 'admin')
+    is_staff = True
+    is_active = True
+    is_superuser = True
+
 
 class GroupFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -34,6 +48,6 @@ class StudentFactory(factory.django.DjangoModelFactory):
         model = models.Student
 
     fio = factory.Faker("name", locale="ru_RU")
-    email = factory.LazyAttribute(lambda person: "{}@gmail.com".format("_".join(person.fio.split())))
+    email = factory.LazyAttribute(lambda person: "{}@gmail.com".format("_".join(person.fio.lower().split())))
 
 

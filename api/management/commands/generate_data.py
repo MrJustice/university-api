@@ -5,7 +5,7 @@ from faker import Faker
 from django.core.management import BaseCommand
 from django.db import transaction
 
-from api.factories import StudentFactory, GroupFactory, ClassRoomFactory, LessonFactory
+from api.factories import StudentFactory, GroupFactory, ClassRoomFactory, LessonFactory, SuperUserFactory
 from api.models import Student, Group, ClassRoom, Lesson
 
 OBJECTS_COUNT = {"group": 5, "student": 50, "classroom": 15, "lesson": 150}
@@ -22,6 +22,8 @@ class Command(BaseCommand):
             self.stdout.write("Deleting done!")
 
         self.stdout.write("Creating data...")
+
+        SuperUserFactory()
 
         groups = []
         for _ in range(OBJECTS_COUNT["group"]):
