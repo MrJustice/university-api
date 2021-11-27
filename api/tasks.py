@@ -29,8 +29,7 @@ def send_schedule_to_email():
             message_text = ""
             for index, lesson in enumerate(group_info["lessons"], start=1):
                 message_text += f"{index}) {lesson[0]} (room {lesson[1]}) beginning at {lesson[2].strftime('%H:%M')} \n"
-            # data = (message_title, message_text, settings.EMAIL_HOST, group_info["emails"])
-            data = (message_title, message_text, settings.EMAIL_HOST, ["akiselev.prod@gmail.com"])
+            data = (message_title, message_text, settings.EMAIL_HOST, group_info["emails"])
             email = send_mass_mail((data,), fail_silently=True)
             if email:
                 print(f"Mail for the group {group_name} was sent successfully.")
