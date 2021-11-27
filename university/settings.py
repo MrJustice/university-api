@@ -123,6 +123,15 @@ AUTH_PASSWORD_VALIDATORS = [
 CELERY_BROKER_URL = "pyamqp://guest@rabbit:5672//"
 CELERY_TIMEZONE = "Europe/Minsk"
 
+# Email
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = env("EMAIL_NAME")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

@@ -25,7 +25,7 @@ class Lesson(models.Model):
     name = models.CharField(verbose_name="Lesson name", max_length=50, unique=True)
     classroom = models.ForeignKey(ClassRoom, related_name="lessons", on_delete=models.SET_NULL, null=True)
     start_at = models.DateTimeField(verbose_name="lecture start time")
-    groups = models.ManyToManyField(Group)
+    group = models.ForeignKey(Group, related_name="lessons", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

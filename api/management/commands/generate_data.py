@@ -41,9 +41,9 @@ class Command(BaseCommand):
 
         for _ in range(OBJECTS_COUNT["lesson"]):
             LessonFactory(
-                groups=random.choice(groups),
+                group=random.choice(groups),
                 classroom=random.choice(classrooms),
-                start_at=fake.date_time_between(start_date='now', end_date='+10m'),
+                start_at=fake.date_time_between(start_date='now', end_date='+1w'),
             )
 
         self.stdout.write("Creating done!")

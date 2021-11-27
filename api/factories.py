@@ -36,11 +36,11 @@ class LessonFactory(factory.django.DjangoModelFactory):
 
     name = factory.Sequence(lambda n: f"Lesson_{n+1}")
 
-    @factory.post_generation
-    def groups(self, create, extracted, **kwargs):
-        if not create or not extracted:
-            return
-        self.groups.add(extracted)
+    # @factory.post_generation
+    # def groups(self, create, extracted, **kwargs):
+    #     if not create or not extracted:
+    #         return
+    #     self.groups.add(extracted)
 
 
 class StudentFactory(factory.django.DjangoModelFactory):

@@ -18,7 +18,7 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 
 class GroupSerializer(serializers.ModelSerializer):
     students = StudentSerializer(many=True, read_only=True)
-    lesson_set = serializers.StringRelatedField(many=True, read_only=True)
+    lessons = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = models.Group
