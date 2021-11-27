@@ -118,13 +118,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Celery
+
+CELERY_BROKER_URL = "pyamqp://guest@rabbit:5672//"
+CELERY_TIMEZONE = "Europe/Minsk"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 

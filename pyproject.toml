@@ -11,6 +11,7 @@ djangorestframework = "^3.12.4"
 psycopg2-binary = "^2.9.2"
 django-environ = "^0.8.1"
 factory-boy = "^3.2.1"
+celery = "^5.2.1"
 
 [tool.poetry.dev-dependencies]
 

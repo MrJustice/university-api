@@ -11,6 +11,24 @@ services:
       - "5435:5432"
     restart: on-failure
 
+  rabbit:
+    image: rabbitmq:3-management-alpine
+    env_file:
+      - ./university/.env
+    ports:
+      - "5675:5672"
+      - "15675:15672"
+    restart: on-failure
+
+  celery:
+    build: .
+    command: celery -A university worker -l info -B
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - rabbit
+      - db
+
   api:
     build: .
     command: >
