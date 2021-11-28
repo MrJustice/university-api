@@ -9,4 +9,9 @@ git clone https://github.com/MrJustice/elinext-university-api.git
 cd university
 docker-compose up --build
 ```
-After the container is up, the application will run on localhost:8000/api/ .
+After the container is up, the application will run on localhost:8000/api/ \
+To access CRUD, log in as admin:
+```console
+username: admin
+password: admin
+```
