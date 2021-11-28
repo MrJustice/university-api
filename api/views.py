@@ -57,4 +57,4 @@ class ScheduleList(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         serializer = self.serializer_class(queryset, many=True)
-        return Response(data=serializer.data,status=status.HTTP_200_OK)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
