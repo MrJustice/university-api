@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 class StudentSerializer(serializers.ModelSerializer):
-    group = serializers.StringRelatedField()
+    group = serializers.PrimaryKeyRelatedField(queryset=models.Group.objects.all())
 
     class Meta:
         model = models.Student
@@ -26,8 +26,8 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class LessonSerializer(serializers.ModelSerializer):
-    classroom = ClassRoomSerializer(read_only=True)
-    groups = GroupSerializer(many=True, read_only=True)
+    classroom = serializers.PrimaryKeyRelatedField(queryset=models.ClassRoom.objects.all())
+    group = serializers.PrimaryKeyRelatedField(queryset=models.Group.objects.all())
 
     class Meta:
         model = models.Lesson
