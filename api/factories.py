@@ -1,4 +1,5 @@
 import factory
+import cyrtranslit
 from api import models
 
 from django.contrib.auth.models import User
@@ -48,6 +49,8 @@ class StudentFactory(factory.django.DjangoModelFactory):
         model = models.Student
 
     fio = factory.Faker("name", locale="ru_RU")
-    email = factory.LazyAttribute(lambda person: "{}@gmail.com".format("_".join(person.fio.lower().split())))
+    email = factory.LazyAttribute(
+        lambda person: "{}@gmail.com".format("_".join(cyrtranslit.to_latin(person.fio, "ru").lower().split()))
+    )
 
 
